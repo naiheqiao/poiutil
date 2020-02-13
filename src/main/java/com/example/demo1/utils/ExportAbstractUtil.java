@@ -20,18 +20,18 @@ import java.util.UUID;
  **/
 public abstract class ExportAbstractUtil {
     public void write(HttpServletResponse response, Workbook workbook){
-        String fileName = UUID.randomUUID().toString()+".xls";
+        String fileName = UUID.randomUUID().toString()+".xlsx";
         pwrite(response,workbook,fileName);
     }
     public void write(HttpServletResponse response,Workbook workbook,String fileName){
         if(StringUtils.isEmpty(fileName)){
-            fileName = UUID.randomUUID().toString()+".xls";
+            fileName = UUID.randomUUID().toString()+".xlsx";
         }
         pwrite(response,workbook,fileName);
     }
     public void write(HttpServletResponse response, List<List<String>> lists,String fileName){
         if(StringUtils.isEmpty(fileName)){
-            fileName = UUID.randomUUID().toString()+".xls";
+            fileName = UUID.randomUUID().toString()+".xlsx";
         }
         SXSSFWorkbook workbook = new SXSSFWorkbook(lists.size());
         SXSSFSheet sheet = workbook.createSheet(fileName.substring(0,fileName.indexOf(".xls")));
@@ -55,7 +55,7 @@ public abstract class ExportAbstractUtil {
             response.addHeader("Content-Disposition", "attachment; filename="+new String(fileName.getBytes("UTF-8"),"ISO8859-1"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            fileName= UUID.randomUUID().toString()+".xls";
+            fileName= UUID.randomUUID().toString()+".xlsx";
             response.addHeader("Content-Disposition", "attachment; filename="+fileName);
         }
         try {

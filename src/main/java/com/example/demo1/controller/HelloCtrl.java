@@ -23,7 +23,7 @@ public class HelloCtrl extends ExportAbstractUtil {
     public void testExcelOutPut(HttpServletResponse response){
         //拼接数据start
         List<List<String>> lists = new ArrayList<List<String>>();
-        String rows[] = {"year","month","day"};
+        String rows[] = {"tian","month","day","报表"};
         List<String> rowsTitle = Arrays.asList(rows);
         lists.add(rowsTitle);
         for(int i = 0; i<=9;i++){
@@ -32,7 +32,7 @@ public class HelloCtrl extends ExportAbstractUtil {
             lists.add(rowssList);
         }
         //拼接数据end
-        write(response,lists,"导出Excel.xls");
+        write(response,lists,"导出Excel.xlsx");
     }
 
 }
